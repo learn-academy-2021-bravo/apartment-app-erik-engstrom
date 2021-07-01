@@ -18,12 +18,55 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      apartments: mockApts
+      apartments: []
     }
   }
-  createNewApt = (newapt) => {
-    console.log(newapt);
+  componentDidMount(){
+    this.aptIndex()
+    }
+  aptIndex = () => {
+    fetch("/apartments")
+    .then(response => response.json())
+    .then(apartmentArray => this.setState({ apartments: apartmentArray}))
+    .catch(errors => console.log("index errors:", errors))
   }
+  createNewApartment = (newapartment) => {
+    return fetch("/apartments", {
+      body: JSON.stringify(newapartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => response.json())
+    .then(payload => this.aptIndex())
+    .catch(errors => {
+      console.log("create errors:", errors)
+    })
+  }
+  updateApartment = (apartment, id) => {
+    fetch(`/apartments/${id}`, {
+      body: JSON.stringify(apartment),
+      headers: {
+      "Content-Type": "application/json"
+        },
+      method: "PATCH"
+        })
+      .then(response => response.json())
+      .then(payload => this.aptIndex())
+      .catch(errors => console.log("update errors:", errors))
+      }
+  deleteApartment = (id) => {
+    fetch(`/apartments/${id}`, {
+      headers: {
+        "Content-type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => response.json())
+    .then(payload => this.aptIndex())
+    .catch(errors => console.log("delete errors:", errors))
+    }
   render () {
     const {
       logged_in,
@@ -32,7 +75,7 @@ class App extends Component {
       sign_in_route,
       sign_out_route
     } = this.props
-    console.log(this.state.apartments);
+    
     return (
       <>
       <Router>
@@ -43,9 +86,9 @@ class App extends Component {
           <Route path="/aptshow/:id" render={ (props) => {
             let id = props.match.params.id
             let apartment = this.state.apartments.find(apartment => apartment.id === +id)
-            return <AptShow apartment={ apartment } />
+            return <AptShow apartment={ apartment } deleteApartment={ this.deleteApartment } />
           }} />
-          <Route path='/aptnew' render = { (props) => <AptNew createNewApt = { this.createNewApt } />} />
+          <Route path='/aptnew' render = { (props) => <AptNew createNewApartment = { this.createNewApartment } current_user= { current_user }/>} />
           <Route path="/aptindex" render={ (props) => <AptIndex apartment={ this.state.apartments } />} />
           <Route exact path={"/aptedit/:id"} render={ (props)  => {
             let id = props.match.params.id

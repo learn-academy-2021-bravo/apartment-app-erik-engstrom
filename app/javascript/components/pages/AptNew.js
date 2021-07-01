@@ -14,7 +14,9 @@ class AptNew extends Component {
       manager_email: "",
       price: "",
       bedrooms: "",
-      bathrooms: ""
+      bathrooms: "",
+      pets: "",
+      user_id: this.props.current_user.id
     },
     success: false
   }
@@ -27,7 +29,7 @@ class AptNew extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.createNewApt(this.state.form)
+    this.props.createNewApartment(this.state.form)
     this.setState({ success: true})
   }
   render() {
@@ -37,40 +39,40 @@ class AptNew extends Component {
       <Form id ="form">
           <FormGroup>
             <Label for = "name">Street</Label>
-            <Input type="string" name="street" onChange = {this.handleChange} value = {this.state.form.street}/>          
-            </FormGroup>
-            <FormGroup>
+            <Input type="text" name="street" onChange = {this.handleChange} value = {this.state.form.street}/>          
+          </FormGroup>
+          <FormGroup>
             <Label for = "city">City</Label>
-            <Input type="string" name="city"onChange = {this.handleChange} value = {this.state.form.city} />          
-            </FormGroup>
-            <FormGroup>
+            <Input type="text" name="city"onChange = {this.handleChange} value = {this.state.form.city} />          
+          </FormGroup>
+          <FormGroup>
             <Label for = "state">State</Label>
-            <Input type="string" name="state" onChange = {this.handleChange} value = {this.state.form.state}/>          
-            </FormGroup>
-            <FormGroup>
+            <Input type="text" name="state" onChange = {this.handleChange} value = {this.state.form.state}/>          
+          </FormGroup>
+          <FormGroup>
             <Label for = "price">Price</Label>
-            <Input type="string" name="price" onChange = {this.handleChange} value = {this.state.form.price}/>          
-            </FormGroup>
-            <FormGroup>
+            <Input type="text" name="price" onChange = {this.handleChange} value = {this.state.form.price}/>          
+          </FormGroup>
+          <FormGroup>
             <Label for = "bedrooms">Bedrooms</Label>
-            <Input type="integer" name="bedrooms" onChange = {this.handleChange} value = {this.state.form.bedrooms}/>          
-            </FormGroup>
-            <FormGroup>
+            <Input type="number" name="bedrooms" onChange = {this.handleChange} value = {this.state.form.bedrooms}/>          
+          </FormGroup>
+          <FormGroup>
             <Label for = "bathrooms">Bathrooms</Label>
-            <Input type="float" name="bathrooms" onChange = {this.handleChange} value = {this.state.form.bathrooms}/>          
-            </FormGroup>
-            <FormGroup>
+            <Input type="text" name="bathrooms" onChange = {this.handleChange} value = {this.state.form.bathrooms}/>          
+          </FormGroup>
+          <FormGroup>
             <Label for = "pets">Pets Allowed?</Label>
-            <Input type="string" name="pets" onChange = {this.handleChange} value = {this.state.form.pets}/>          
-            </FormGroup>
-             <FormGroup>
+            <Input type="text" name="pets" onChange = {this.handleChange} value = {this.state.form.pets}/>          
+          </FormGroup>
+          <FormGroup>
             <Label for = "manager">Manager Name</Label>
-            <Input type="string" name="manager" onChange = {this.handleChange} value = {this.state.form.manager}/>          
-            </FormGroup>
-            <FormGroup>
+            <Input type="text" name="manager" onChange = {this.handleChange} value = {this.state.form.manager}/>          
+          </FormGroup>
+          <FormGroup>
             <Label for = "manager_email">Manager Email</Label>
-            <Input type="string" name="manager_email" onChange = {this.handleChange} value = {this.state.form.manager_email}/>          
-            </FormGroup>
+            <Input type="text" name="manager_email" onChange = {this.handleChange} value = {this.state.form.manager_email}/>          
+          </FormGroup>
             <br />
             <Button 
             id ="new-button"
