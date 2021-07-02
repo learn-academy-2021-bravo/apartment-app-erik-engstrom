@@ -98,7 +98,7 @@ class App extends Component {
                  updateApt={this.updateApt}
                  apartment = { apartment } />
                )}
-             }
+              }
              />
           <Route component={ NotFound } />
         </Switch>

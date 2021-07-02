@@ -11,11 +11,11 @@ class AptShow extends Component {
       <Col sm="6">
         <Card body>
           <CardTitle>Information on apartment at address: { apartment.street }</CardTitle>
-            <CardText>Apartment located in { apartment.city },{ apartment.state }. Rent is { apartment.price }. The apartment has { apartment.bedrooms } bedrooms and { apartment.bathrooms } bathrooms.  Pets allowed? { apartment.pets }. For more information please contact { apartment.manager } at { apartment.manager_email }. </CardText>
+            <CardText>Apartment located in { apartment.city }, { apartment.state }. Rent is { apartment.price }. The apartment has { apartment.bedrooms } bedrooms and { apartment.bathrooms } bathrooms.  Pets allowed? { apartment.pets }. For more information please contact { apartment.manager } at { apartment.manager_email }. </CardText>
         </Card>
       </Col>
       <NavLink to="/aptindex">
-        <Button>Delete Apartment Listing</Button>
+        <Button onClick={ () => this.props.deleteApartment(apartment.id)} color="danger" >Delete Apartment Listing</Button>
       </NavLink>  
       </>
     )

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, Label, Input  } from 'reactstrap';
-import { Redirect } from 'react-router-dom'
+import { Redirect, NavLink } from 'react-router-dom'
 
 class AptEdit extends Component {
   constructor(props) {
@@ -80,6 +80,10 @@ class AptEdit extends Component {
             >
               Update an Apartment Listing
             </Button>
+          <NavLink to="/aptindex"> 
+            <Button onClick={ () => this.props.deleteApartment(apartment.id)} color="danger" >Delete Apartment Listing
+            </Button>
+          </NavLink> 
         </Form>
         {this.state.success && <Redirect to = { `/aptshow/${this.props.apartment.id}`} />}
       </>

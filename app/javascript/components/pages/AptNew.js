@@ -35,7 +35,7 @@ class AptNew extends Component {
   render() {
     return(
       <>
-      <h3>This is the New Page</h3>
+      <h3>Create a New Listing</h3>
       <Form id ="form">
           <FormGroup>
             <Label for = "name">Street</Label>
@@ -78,8 +78,7 @@ class AptNew extends Component {
             id ="new-button"
             name="submit"
             color="success"
-            onClick={this.handleSubmit}
-            >
+            onClick={this.handleSubmit}>
               Create a New Apartment Listing
             </Button>
         </Form>
