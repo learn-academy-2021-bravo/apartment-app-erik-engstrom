@@ -14,7 +14,9 @@ class AptEdit extends Component {
       manager_email:"",
       price:"",
       bedrooms:"",
-      bathrooms:""
+      bathrooms:"",
+      pets: "",
+      user_id: this.props.current_user.id
     },
     success: false
   }
@@ -27,7 +29,7 @@ class AptEdit extends Component {
   
     handleSubmit = (e) => {
       e.preventDefault()
-      this.props.updateApt(this.state.form, this.props.apartment.id)
+      this.props.updateApartment(this.state.form, this.props.apartment.id)
       this.setState({ success: true})
     }
   render() {
@@ -37,19 +39,19 @@ class AptEdit extends Component {
         <Form id ="form">
           <FormGroup>
             <Label for = "name">Street</Label>
-            <Input type="string" name="street" onChange = {this.handleChange} value = {this.state.form.street}/>          
+            <Input type="text" name="street" onChange = {this.handleChange} value = {this.state.form.street}/>          
           </FormGroup>
           <FormGroup>
             <Label for = "city">City</Label>
-            <Input type="string" name="city"onChange = {this.handleChange} value = {this.state.form.city} />          
+            <Input type="text" name="city"onChange = {this.handleChange} value = {this.state.form.city} />          
           </FormGroup>
           <FormGroup>
             <Label for = "state">State</Label>
-            <Input type="string" name="state" onChange = {this.handleChange} value = {this.state.form.state}/>          
+            <Input type="text" name="state" onChange = {this.handleChange} value = {this.state.form.state}/>          
           </FormGroup>
           <FormGroup>
             <Label for = "price">Price</Label>
-            <Input type="string" name="price" onChange = {this.handleChange} value = {this.state.form.price}/>          
+            <Input type="text" name="price" onChange = {this.handleChange} value = {this.state.form.price}/>          
           </FormGroup>
           <FormGroup>
             <Label for = "bedrooms">Bedrooms</Label>
@@ -61,29 +63,24 @@ class AptEdit extends Component {
           </FormGroup>
           <FormGroup>
             <Label for = "pets">Pets Allowed?</Label>
-            <Input type="string" name="pets" onChange = {this.handleChange} value = {this.state.form.pets}/>          
+            <Input type="text" name="pets" onChange = {this.handleChange} value = {this.state.form.pets}/>          
           </FormGroup>
           <FormGroup>
             <Label for = "manager">Manager Name</Label>
-            <Input type="string" name="manager" onChange = {this.handleChange} value = {this.state.form.manager}/>          
+            <Input type="text" name="manager" onChange = {this.handleChange} value = {this.state.form.manager}/>          
           </FormGroup>
           <FormGroup>
             <Label for = "manager_email">Manager Email</Label>
-            <Input type="string" name="manager_email" onChange = {this.handleChange} value = {this.state.form.manager_email}/>          
+            <Input type="text" name="manager_email" onChange = {this.handleChange} value = {this.state.form.manager_email}/>          
           </FormGroup>
             <br />
             <Button 
-            id ="edit-button"
-            name="submit"
-            color="success"
-            onClick={this.handleSubmit}
-            >
+              id ="edit-button"
+              name="submit"
+              color="success"
+              onClick={this.handleSubmit}>
               Update an Apartment Listing
             </Button>
-          <NavLink to="/aptindex"> 
-            <Button onClick={ () => this.props.deleteApartment(apartment.id)} color="danger" >Delete Apartment Listing
-            </Button>
-          </NavLink> 
         </Form>
         {this.state.success && <Redirect to = { `/aptshow/${this.props.apartment.id}`} />}
       </>

@@ -45,6 +45,7 @@ class App extends Component {
     })
   }
   updateApartment = (apartment, id) => {
+  console.log(apartment)
     fetch(`/apartments/${id}`, {
       body: JSON.stringify(apartment),
       headers: {
@@ -95,8 +96,10 @@ class App extends Component {
             let apartment = this.state.apartments.find(apartment => apartment.id === parseInt(id))
               return(
                 <AptEdit
-                 updateApt={this.updateApt}
-                 apartment = { apartment } />
+                 updateApartment={this.updateApartment}
+                 apartment = { apartment } 
+                 current_user= { current_user }
+                />
                )}
               }
              />
