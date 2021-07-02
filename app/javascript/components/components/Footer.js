@@ -11,9 +11,10 @@ class Footer extends Component {
         <NavItem>
           <NavLink to="/">Home</NavLink>
         </NavItem>
+        { this.props.logged_in && 
         <NavItem>
           <NavLink to="aptnew">Add New Listing</NavLink>
-        </NavItem>
+        </NavItem>}
         <NavItem>
           <NavLink to="aptindex">Apartment Listings</NavLink>
         </NavItem>

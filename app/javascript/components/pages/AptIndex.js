@@ -7,8 +7,8 @@ class AptIndex extends Component {
     let { apartment } = this.props 
     return(
       <>
-      <h3>Available Apartments</h3>
-      <Col>
+      <h2 id="h2">Available Apartments</h2>
+      <Col id="form">
         { apartment.map(apartment => {
         return (
         <Card body key={ apartment.id }>
@@ -20,6 +20,9 @@ class AptIndex extends Component {
         </Card>
         )
         })}
+        <NavLink to ="/">
+          <Button id = "home-button" color="success">Home</Button>      
+        </NavLink>
       </Col>
       </>
     )

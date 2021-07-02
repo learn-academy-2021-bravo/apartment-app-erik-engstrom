@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import mockApts from './mockApts.js'
-import Header from "./components/Header"
+import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import AptShow from './pages/AptShow'
@@ -87,9 +86,9 @@ class App extends Component {
           <Route path="/aptshow/:id" render={ (props) => {
             let id = props.match.params.id
             let apartment = this.state.apartments.find(apartment => apartment.id === +id)
-            return <AptShow apartment={ apartment } deleteApartment={ this.deleteApartment } />
+            return <AptShow apartment={ apartment } deleteApartment={ this.deleteApartment } logged_in= { logged_in} />
           }} />
-          <Route path='/aptnew' render = { (props) => <AptNew createNewApartment = { this.createNewApartment } current_user= { current_user }/>} />
+          {logged_in && <Route path='/aptnew' render = { (props) => <AptNew createNewApartment = { this.createNewApartment } current_user= { current_user }/>} />}
           <Route path="/aptindex" render={ (props) => <AptIndex apartment={ this.state.apartments } />} />
           <Route exact path={"/aptedit/:id"} render={ (props)  => {
             let id = props.match.params.id
@@ -105,7 +104,7 @@ class App extends Component {
              />
           <Route component={ NotFound } />
         </Switch>
-        <Footer />
+        <Footer logged_in={ logged_in }/>
       </Router>
       </>
     );

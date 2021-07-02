@@ -35,7 +35,7 @@ class AptNew extends Component {
   render() {
     return(
       <>
-      <h3>Create a New Listing</h3>
+      <h2 id="h2">Create a New Listing</h2>
       <Form id ="form">
           <FormGroup>
             <Label for = "name">Street</Label>

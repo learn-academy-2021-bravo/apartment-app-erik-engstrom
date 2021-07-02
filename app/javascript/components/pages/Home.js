@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Button } from 'reactstrap'
+import homePage from '../assets/Af.png'
 
 class Home extends Component {
   render() {
     return(
       <>
-      <h3>This is the Home Page</h3>
+    <div id = "a-f">
+      <h2 id="h2">Apartment Finder</h2>  
+      <img id = "home-img" src = { homePage } alt = "Welcome to Apartment Finder"  />
+       <br/>
+      <NavLink id = "home-button" to ="/aptindex">
+      <Button  color="success">Apartment Listings </Button>      
+      </NavLink>
+    </div>
+      
+
       </>
     )
   }

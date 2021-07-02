@@ -18,18 +18,22 @@ class Header extends Component{
       <div>
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">Home</NavbarBrand>
-          <Nav>
+          <Nav id ="header">
             <NavItem>
+              { logged_in && <a href={ sign_out_route }>Sign Out</a> }
+              { !logged_in && <a href={ sign_in_route }>Sign In</a> }
+            </NavItem>
+            <NavItem id="head-link">
               <NavLink to="/aptindex">Apartment Listings</NavLink>
             </NavItem>
-            <NavItem>
+            {logged_in && <NavItem>
               <NavLink to="/aptnew">Create New Listing</NavLink>
-            </NavItem>
+            </NavItem>}
+            
           </Nav>
       </Navbar>
     </div>
-      { logged_in && <a href={ sign_out_route }>Sign Out</a> }
-      { !logged_in && <a href={ sign_in_route }>Sign In</a> }
+      
 
       </>
     )

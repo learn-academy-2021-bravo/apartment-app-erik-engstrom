@@ -7,21 +7,26 @@ class AptShow extends Component {
     let { apartment } = this.props;
     return(
       <>
-      <h3>Apartment Info</h3>
+      <h2 id="h2">Apartment Info</h2>
+      <div id="show">
       <Col sm="6">
         <Card body>
           <CardTitle>Information on apartment at address: { apartment.street }</CardTitle>
             <CardText>Apartment located in { apartment.city }, { apartment.state }. Rent is { apartment.price }. The apartment has { apartment.bedrooms } bedrooms and { apartment.bathrooms } bathrooms.  Pets allowed? { apartment.pets }. For more information please contact { apartment.manager } at { apartment.manager_email }. </CardText>
         </Card>
       </Col>
-      <NavLink to={`/aptedit/${apartment.id}`}>
-        <Button color="primary">
+      <NavLink to ="/aptindex">
+      <Button id = "index-button" color="success">Apartment Listings </Button>      
+      </NavLink>
+     {this.props.logged_in && <NavLink to={`/aptedit/${apartment.id}`}>
+        <Button id = "index-button" color="primary">
           Edit Listing
         </Button>
-      </NavLink>
-      <NavLink to="/aptindex">
-        <Button onClick={ () => this.props.deleteApartment(apartment.id)} color="danger">Delete Apartment Listing</Button>
-      </NavLink>  
+      </NavLink>}
+      {this.props.logged_in && <NavLink to="/aptindex">
+        <Button id = "index-button" onClick={ () => this.props.deleteApartment(apartment.id)} color="danger">Delete Apartment Listing</Button>
+      </NavLink>}
+      </div>  
       </>
     )
   }

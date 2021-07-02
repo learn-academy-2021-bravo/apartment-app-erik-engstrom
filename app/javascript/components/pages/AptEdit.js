@@ -35,7 +35,7 @@ class AptEdit extends Component {
   render() {
     return(
       <>
-      <h3>Edit an Apartment Listing</h3>
+      <h2 id="h2">Edit an Apartment Listing</h2>
         <Form id ="form">
           <FormGroup>
             <Label for = "name">Street</Label>
